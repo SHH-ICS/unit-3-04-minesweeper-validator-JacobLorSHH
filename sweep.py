@@ -5,8 +5,19 @@
 def validate( block_data ):
   # Check whether the centre block is a bomb, a number, or an invalid input
   # Skip bombs, send an error on invalid input, verify numbers
-
-  return
+  root = block_data[1][1]
+  root_value = 0
+  if root == -1:
+    return True
+  else:
+    for i in range(len(grid)):
+      for x in grid[i]:
+        if x == -1:
+          root_value += 1
+    if root_value == root:
+      return True
+    else:
+      return False
 
 
 grid = [
