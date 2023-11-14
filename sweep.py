@@ -42,9 +42,11 @@ def validate( block_data ):
                 if a == "top_bottom":
                     asdf = block_data[1]
                     if row < 1:
+                        print("top")
                         asdf.append(block_data[0][0]) 
                         asdf.append(block_data[0][2])
                     else:
+                        print("bottom")
                         asdf.append(block_data[2][0]) 
                         asdf.append(block_data[2][2])
                     if asdf.count(-1) == block_data[row][column]:
@@ -57,11 +59,14 @@ def validate( block_data ):
                     d.append(block_data[1][1])
                     d.append(block_data[2][1])
                     if column < 1:
+                        print("left")
                         d.append(block_data[0][0])
                         d.append(block_data[2][0])
                     else:
+                        print("right")
                         d.append(block_data[0][2])
-                        d.append(block_data[0][0])
+                        d.append(block_data[2][2])
+                    print(d)
                     if d.count(-1) == block_data[row][column]:
                         pass
                     else:
@@ -80,8 +85,8 @@ def validate( block_data ):
 
 
 grid = [
-  [1,2,-1],
-  [2,-1,3],
+  [-1,2,1],
+  [3,-1,2],
   [2,-1,2]
 ]
 print(validate(grid))
