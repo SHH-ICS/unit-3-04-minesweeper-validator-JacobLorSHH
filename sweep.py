@@ -66,7 +66,7 @@ def validate( block_data ):
                         pass
                     else:
                         return row, column
-    return "dean copied code/valid"
+    return "valid"
 
 
 
