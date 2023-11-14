@@ -40,7 +40,14 @@ def validate( block_data ):
             elif ((row in corner_val) ^ (column in corner_val)) and block_data[row][column] >= 0:
                 a = side_detectors(row, column)
                 if a == "top_bottom":
-                    if block_data[1].count(-1) == block_data[row][column]:
+                    asdf = block_data[1]
+                    if row < 1:
+                        asdf.append(block_data[0][0]) 
+                        asdf.append(block_data[0][2])
+                    else:
+                        asdf.append(block_data[2][0]) 
+                        asdf.append(block_data[2][2])
+                    if asdf.count(-1) == block_data[row][column]:
                         pass
                     else:
                         return row, column
@@ -49,11 +56,17 @@ def validate( block_data ):
                     d.append(block_data[0][1])
                     d.append(block_data[1][1])
                     d.append(block_data[2][1])
+                    if column < 1:
+                        d.append(block_data[0][0])
+                        d.append(block_data[2][0])
+                    else:
+                        d.append(block_data[0][2])
+                        d.append(block_data[0][0])
                     if d.count(-1) == block_data[row][column]:
                         pass
                     else:
                         return row, column
-    return "valid"
+    return "dean copied code/valid"
 
 
 
@@ -67,8 +80,8 @@ def validate( block_data ):
 
 
 grid = [
-  [2,-1,2],
-  [2,-1,2],
-  [1,1,1]
+  [1,2,-1],
+  [2,-1,3],
+  [2,-1,2]
 ]
 print(validate(grid))
